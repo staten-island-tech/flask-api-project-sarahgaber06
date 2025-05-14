@@ -6,5 +6,10 @@ app = Flask(__name__)
 # Route for the home page
 @app.route("/")
 def index():
-    #Ask the Disney API for the first 15 Disney Characters
-    response = requests.get("")
+    #Get a list of students at Hogwarts
+    response = requests.get("https://hp-api.onrender.com/api/characters/students")
+    students = response.json()
+
+    #Filter the ones out with missing images
+    students_with_images = [student for student in students if student['image']]
+    return render_template("index.html, students=student_with_images")
