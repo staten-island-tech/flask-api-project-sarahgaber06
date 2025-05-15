@@ -13,3 +13,10 @@ def index():
     #Filter the ones out with missing images
     students_with_images = [student for student in students if student['image']]
     return render_template("index.html, students=student_with_images")
+
+# Route for the student detail page
+@app.route("/student/<name>")
+def student_detail(name):
+    response = requests.get("https://hp-api.onrender.com/api/characters/students")
+    students = response.json()
+
