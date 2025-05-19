@@ -19,4 +19,5 @@ def index():
 def student_detail(name):
     response = requests.get("https://hp-api.onrender.com/api/characters/students")
     students = response.json()
+    
 
