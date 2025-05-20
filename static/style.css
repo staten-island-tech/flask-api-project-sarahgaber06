@@ -1,9 +1,27 @@
+/* General body style with Hogwarts background image */
 body {
     font-family: 'Segoe UI', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
+    background: url('hogwarts.jpg') no-repeat center center fixed;
+    background-image:url("hogwarts.webp");
+    background-size: cover;
+    background-position: center;
     color: #333;
+}
+
+/* Optional Hogwarts banner at the top of the page */
+.hogwarts-banner {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.hogwarts-banner img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
 
 h1 {
@@ -80,7 +98,6 @@ h2.house-title.other      { color: #888; }
 /* Color-coded cards */
 .student-card.gryffindor { border: 2px solid #ae0001; }
 .student-card.slytherin  { border: 2px solid #2a623d; }
-.student-card.ravenclaw  { border: 2px solid #222f5b; }
+student-card.ravenclaw   { border: 2px solid #222f5b; }
 .student-card.hufflepuff { border: 2px solid #ecb939; }
 .student-card.other      { border: 2px solid #bbb; }
-
