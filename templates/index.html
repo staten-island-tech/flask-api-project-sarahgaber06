@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to Hogwarts</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="home-container">
+        <h1>Welcome to Hogwarts</h1>
+        <a class="button" href="{{ url_for('show_students') }}">View Students</a>
+    </div>
+</body>
+</html>

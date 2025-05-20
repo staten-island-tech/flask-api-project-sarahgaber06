@@ -3,21 +3,22 @@ import requests
 
 app = Flask(__name__)
 
-# Route for the home page
+# Function to get students with real image URLs
+def get_students_with_images():
+    response = requests.get("https://hp-api.onrender.com/api/characters/students")
+    students = response.json()
+    return [s for s in students if s.get("image") and s["image"].strip()]
+
+# Home page
 @app.route("/")
 def index():
-    #Get a list of students at Hogwarts
-    response = requests.get("https://hp-api.onrender.com/api/characters/students")
-    students = response.json()
+    return render_template("index.html")
 
-    #Filter the ones out with missing images
-    students_with_images = [student for student in students if student['image']]
-    return render_template("index.html, students=student_with_images")
+# Students page
+@app.route("/students")
+def show_students():
+    students = get_students_with_images()
+    return render_template("students.html", students=students)
 
-# Route for the student detail page
-@app.route("/student/<name>")
-def student_detail(name):
-    response = requests.get("https://hp-api.onrender.com/api/characters/students")
-    students = response.json()
-    
-
+if __name__ == "__main__":
+    app.run(debug=True)
