@@ -1,36 +1,204 @@
-/* General body style with Hogwarts background image */
+/* General body style */
 body {
     font-family: 'Segoe UI', sans-serif;
     margin: 0;
     padding: 0;
-    background: url('hogwarts.jpg') no-repeat center center fixed;
-    background-image:url("hogwarts.webp");
-    background-size: cover;
-    background-position: center;
-    color: #333;
+    color: #ede9e7;
+    background-color: #09070a; /* beige-white background */
+}
+.house-card span {
+    font-weight: bold;
+    font-size: 1.1rem;
+    /* Add light color highlight */
+    color: #f7c6c5;  /* light red for Gryffindor */
 }
 
-/* Optional Hogwarts banner at the top of the page */
+.house-card.gryffindor span {
+    color: #440b0a;  /* light red */
+    background-color: #f8d6d6;  /* light red/pinkish */
+}
+
+.house-card.slytherin span {
+    color: #124509;  /* light green */
+    background-color: #d6f2d6;  /* light green */
+
+}
+
+.house-card.ravenclaw span {
+    color: #124280;  /* light blue */
+    background-color: #d6dff8;  /* light blue */
+
+}
+
+.house-card.hufflepuff span {
+    color: #b49405;  /* light yellow */
+    background-color: #fff7d6;  /* light yellow */
+
+}
+
+
+
+
+h1.page-title {
+    color: #1a0538;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #5a3e85; /* Underline */
+    display: inline-block; /* Shrinks underline to text width */
+    margin: 0 auto;
+}
+body.view-front-page {
+    background-image: url("hogwarts.webp");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover; /* fills entire container */
+    min-height: 100vh; /* make sure body fills viewport height */
+    margin: 0;
+    padding: 0;
+}
+
+/* General body style */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #e8eaee;
+}
+
+/* Only apply background image on front page */
+body.view-front-page {
+    background-image: url('hogwarts.webp');
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: 200% auto; /* Full width, auto height */
+    background-attachment: scroll; /* Optional: remove fixed behavior */
+    background-color: #0b0b0b;
+}
+
+/* Page title */
+h1.page-title {
+    color: #1a0538;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #5a3e85;
+    display: inline-block;
+    margin: 0 auto;
+}
+
+/* Welcome section styling */
+.welcome-section {
+    text-align: center;
+    padding: 40px 20px;
+    color: #ffffff;
+}
+
+/* Hogwarts heading */
+.welcome-section h1 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+}
+
+/* Grid layout for houses */
+.house-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 600px;
+    margin: 40px auto;
+}
+
+/* Individual house card */
+.house-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 20px;
+    border-radius: 12px;
+    transition: transform 0.3s;
+}
+
+/* House card image */
+.house-card img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+/* House card text */
+.house-card span {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Optional hover effect */
+.house-card:hover {
+    transform: scale(1.05);
+}
+
+  
+  .view-students-link {
+    margin-top: 30px;
+  }
+  
+  .view-students-link a {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #ffc107;
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    transition: background-color 0.3s ease;
+  }
+  
+  .view-students-link a:hover {
+    background-color: #e0a800;
+  }
+  
+
+  
+.students-banner {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 15px 20px;       /* Smaller vertical padding */
+    font-size: 1.8rem;        /* Smaller font size */
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+    user-select: none;
+}
+
+.students-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+/* Only apply background image on front page */
+body.view-front-page {
+    background: url('hogwarts.webp') no-repeat center center;
+    background-size: contain; /* Show full image */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+/* Hogwarts banner */
 .hogwarts-banner {
     text-align: center;
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: #0e0f12; /* Light blue */
 }
 
-.hogwarts-banner img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-}
-
-h1 {
-    text-align: center;
-    padding: 20px;
-    background-color: #222;
-    color: white;
-    margin: 0;
-}
 
 h2.house-title {
     margin: 40px 0 10px 20px;
@@ -40,12 +208,51 @@ h2.house-title {
     text-transform: uppercase;
 }
 
-/* Color-coded house titles */
 h2.house-title.gryffindor { color: #ae0001; }
 h2.house-title.slytherin  { color: #2a623d; }
 h2.house-title.ravenclaw  { color: #222f5b; }
 h2.house-title.hufflepuff { color: #ecb939; }
 h2.house-title.other      { color: #888; }
+
+
+.student-card.gryffindor {
+    background-color: #f8d6d6;  /* light red/pinkish */
+    border: 2px solid #ae0001;  /* Gryffindor red */
+    color: #660000;             /* Dark red text */
+}
+
+.student-card.slytherin {
+    background-color: #d6f2d6;  /* light green */
+    border: 2px solid #2a623d;  /* Slytherin green */
+    color: #1a3a1a;             /* Dark green text */
+}
+
+.student-card.hufflepuff {
+    background-color: #fff7d6;  /* light yellow */
+    border: 2px solid #ecb939;  /* Hufflepuff yellow */
+    color: #665a00;             /* Dark yellow text */
+}
+
+.student-card.ravenclaw {
+    background-color: #d6dff8;  /* light blue */
+    border: 2px solid #222f5b;  /* Ravenclaw blue */
+    color: #1a2140;             /* Dark blue text */
+}
+.student-card.gryffindor h3 {
+    color: #ae0001; /* Gryffindor red */
+}
+
+.student-card.slytherin h3 {
+    color: #2a623d; /* Slytherin green */
+}
+
+.student-card.hufflepuff h3 {
+    color: #ecb939; /* Hufflepuff yellow */
+}
+
+.student-card.ravenclaw h3 {
+    color: #222f5b; /* Ravenclaw blue */
+}
 
 .grid {
     display: grid;
@@ -55,9 +262,9 @@ h2.house-title.other      { color: #888; }
 }
 
 .student-card {
-    background-color: white;
+    background-color: rgb(26, 22, 22);
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(62, 62, 62, 0.1);
     overflow: hidden;
     transition: transform 0.2s ease;
     display: flex;
@@ -80,7 +287,7 @@ h2.house-title.other      { color: #888; }
 .student-card h3 {
     margin: 10px 0;
     font-size: 1.2rem;
-    color: #222;
+    color: #f2d4d4;
 }
 
 .student-card ul {
@@ -95,9 +302,8 @@ h2.house-title.other      { color: #888; }
     margin: 5px 0;
 }
 
-/* Color-coded cards */
 .student-card.gryffindor { border: 2px solid #ae0001; }
 .student-card.slytherin  { border: 2px solid #2a623d; }
-student-card.ravenclaw   { border: 2px solid #222f5b; }
+.student-card.ravenclaw  { border: 2px solid #222f5b; }
 .student-card.hufflepuff { border: 2px solid #ecb939; }
 .student-card.other      { border: 2px solid #bbb; }

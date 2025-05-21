@@ -5,9 +5,17 @@
     <title>Hogwarts Students</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 </head>
-<body>
-    <h1>Hogwarts Students</h1>
-
+    </div>
+    <h1 class="page-title">Hogwarts Students</h1>
+    <body class="view-students-page">
+        <div class="students-banner">
+        </div>
+        <!-- rest of students page content -->
+    </body>
+    <div class="students-banner">
+        Hogwarts Students
+    </div>
+    
     {% set houses = ['Gryffindor', 'Slytherin', 'Ravenclaw', 'Hufflepuff'] %}
 
     {% for house in houses %}
@@ -60,5 +68,5 @@
     {% endfor %}
 
 </body>
-</html> 
-                            
+</html>
+
