@@ -35,17 +35,6 @@
                             <li><strong>Ancestry:</strong> {{ student.get('ancestry', 'Unknown') }}</li>
                             <li><strong>Eye Color:</strong> {{ student.get('eyeColour', 'Unknown') }}</li>
                             <li><strong>Hair Color:</strong> {{ student.get('hairColour', 'Unknown') }}</li>
-                            <li><strong>Wand:</strong>
-                                {% set wand = student.get('wand', {}) %}
-                                {% if wand and (wand.get('wood') or wand.get('core') or wand.get('length')) %}
-                                    <ul>
-                                        <li><strong>Wood:</strong> {{ wand.get('wood', 'Unknown') }}</li>
-                                        <li><strong>Core:</strong> {{ wand.get('core', 'Unknown') }}</li>
-                                        <li><strong>Length:</strong> {{ wand.get('length', 'Unknown') }}</li>
-                                    </ul>
-                                {% else %}
-                                    Unknown
-                                {% endif %}
                             </li>
                             <li><strong>Patronus:</strong> {{ student.get('patronus', 'Unknown') }}</li>
                             <li><strong>Hogwarts Student:</strong> {{ 'Yes' if student.get('hogwartsStudent') else 'No' }}</li>

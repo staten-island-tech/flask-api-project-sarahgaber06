@@ -37,8 +37,6 @@ body {
 }
 
 
-
-
 h1.page-title {
     color: #1a0538;
     text-align: center;
@@ -47,15 +45,19 @@ h1.page-title {
     display: inline-block; /* Shrinks underline to text width */
     margin: 0 auto;
 }
-body.view-front-page {
-    background-image: url("hogwarts.webp");
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover; /* fills entire container */
-    min-height: 100vh; /* make sure body fills viewport height */
+view-front-page {
+    height: 100%;
     margin: 0;
     padding: 0;
 }
+
+view-front-page {
+    background-image: url("hogwarts.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
 
 /* General body style */
 body {

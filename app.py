@@ -49,7 +49,7 @@ def students():
             'alternate_names': [],
             'alive': True
         },
-        # Add more students as needed
+        # Add more students
     ]
 
     return render_template('students.html', students=students_data)
