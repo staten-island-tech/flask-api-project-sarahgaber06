@@ -1,61 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>Hogwarts Students</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+   <meta charset="UTF-8" />
+   <title>Hogwarts Students</title>
+   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 </head>
-    </div>
-    <h1 class="page-title">Hogwarts Students</h1>
-    <body class="view-students-page">
-        <div class="students-banner">
-        </div>
-        <!-- rest of students page content -->
-    </body>
-    <div class="students-banner">
-        Hogwarts Students
-    </div>
-    
-    {% set houses = ['Gryffindor', 'Slytherin', 'Ravenclaw', 'Hufflepuff'] %}
+   </div>
+   <h1 class="page-title">Hogwarts Students</h1>
+   <body class="view-students-page">
+       <div class="students-banner">
+       </div>
+       <!-- rest of students page content -->
+   </body>
+   <div class="students-banner">
+       Hogwarts Students
+   </div>
+  
+   {% set houses = ['Gryffindor', 'Slytherin', 'Ravenclaw', 'Hufflepuff'] %}
 
-    {% for house in houses %}
-        <h2 class="house-title {{ house|lower }}">{{ house }}</h2>
-        <div class="grid">
-            {% for student in students %}
-                {% if student.get('house') == house %}
-                    <div class="student-card {{ house|lower }}">
-                        <img src="{{ student.get('image', '') }}" alt="{{ student.get('name', 'Unknown') }}" />
-                        <h3>{{ student.get('name', 'Unknown') }}</h3>
-                        <ul>
-                            <li><strong>Species:</strong> {{ student.get('species', 'Unknown') }}</li>
-                            <li><strong>Gender:</strong> {{ student.get('gender', 'Unknown') }}</li>
-                            <li><strong>House:</strong> {{ student.get('house', 'Unknown') }}</li>
-                            <li><strong>Date of Birth:</strong> {{ student.get('dateOfBirth', 'Unknown') }}</li>
-                            <li><strong>Year of Birth:</strong> {{ student.get('yearOfBirth', 'Unknown') }}</li>
-                            <li><strong>Ancestry:</strong> {{ student.get('ancestry', 'Unknown') }}</li>
-                            <li><strong>Eye Color:</strong> {{ student.get('eyeColour', 'Unknown') }}</li>
-                            <li><strong>Hair Color:</strong> {{ student.get('hairColour', 'Unknown') }}</li>
-                            </li>
-                            <li><strong>Patronus:</strong> {{ student.get('patronus', 'Unknown') }}</li>
-                            <li><strong>Hogwarts Student:</strong> {{ 'Yes' if student.get('hogwartsStudent') else 'No' }}</li>
-                            <li><strong>Hogwarts Staff:</strong> {{ 'Yes' if student.get('hogwartsStaff') else 'No' }}</li>
-                            <li><strong>Actor:</strong> {{ student.get('actor', 'Unknown') }}</li>
-                            <li><strong>Alternate Names:</strong>
-                                {% set alt_names = student.get('alternate_names', []) %}
-                                {% if alt_names|length > 0 %}
-                                    {{ alt_names | join(', ') }}
-                                {% else %}
-                                    None
-                                {% endif %}
-                            </li>
-                            <li><strong>Alive:</strong> {{ 'Yes' if student.get('alive') else 'No' }}</li>
-                        </ul>
-                    </div>
-                {% endif %}
-            {% endfor %}
-        </div>
-    {% endfor %}
+
+   {% for house in houses %}
+       <h2 class="house-title {{ house|lower }}">{{ house }}</h2>
+       <div class="grid">
+           {% for student in students %}
+               {% if student.get('house') == house %}
+                   <div class="student-card {{ house|lower }}">
+                       <img src="{{ student.get('image', '') }}" alt="{{ student.get('name', 'Unknown') }}" />
+                       <h3>{{ student.get('name', 'Unknown') }}</h3>
+                       <ul>
+                           <li><strong>Species:</strong> {{ student.get('species', 'Unknown') }}</li>
+                           <li><strong>Gender:</strong> {{ student.get('gender', 'Unknown') }}</li>
+                           <li><strong>House:</strong> {{ student.get('house', 'Unknown') }}</li>
+                           <li><strong>Date of Birth:</strong> {{ student.get('dateOfBirth', 'Unknown') }}</li>
+                           <li><strong>Year of Birth:</strong> {{ student.get('yearOfBirth', 'Unknown') }}</li>
+                           <li><strong>Ancestry:</strong> {{ student.get('ancestry', 'Unknown') }}</li>
+                           <li><strong>Eye Color:</strong> {{ student.get('eyeColour', 'Unknown') }}</li>
+                           <li><strong>Hair Color:</strong> {{ student.get('hairColour', 'Unknown') }}</li>
+                           </li>
+                           <li><strong>Patronus:</strong> {{ student.get('patronus', 'Unknown') }}</li>
+                           <li><strong>Hogwarts Student:</strong> {{ 'Yes' if student.get('hogwartsStudent') else 'No' }}</li>
+                           <li><strong>Hogwarts Staff:</strong> {{ 'Yes' if student.get('hogwartsStaff') else 'No' }}</li>
+                           <li><strong>Actor:</strong> {{ student.get('actor', 'Unknown') }}</li>
+                           <li><strong>Alternate Names:</strong>
+                               {% set alt_names = student.get('alternate_names', []) %}
+                               {% if alt_names|length > 0 %}
+                                   {{ alt_names | join(', ') }}
+                               {% else %}
+                                   None
+                               {% endif %}
+                           </li>
+                           <li><strong>Alive:</strong> {{ 'Yes' if student.get('alive') else 'No' }}</li>
+                       </ul>
+                   </div>
+               {% endif %}
+           {% endfor %}
+       </div>
+   {% endfor %}
+
 
 </body>
 </html>
+
+
+
 

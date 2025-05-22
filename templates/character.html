@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ character.name }}</title>
+</head>
+<body>
+  <h1>{{ character.name }}</h1>
+  <img src="{{ character.image or url_for('static', filename='default.png') }}" width="200" />
+  <p><strong>House:</strong> {{ character.house or 'N/A' }}</p>
+  <p><strong>Species:</strong> {{ character.species or 'N/A' }}</p>
+  <p><strong>Gender:</strong> {{ character.gender or 'N/A' }}</p>
+  <p><strong>Actor:</strong> {{ character.actor or 'N/A' }}</p>
+  <p><strong>Date of Birth:</strong> {{ character.dateOfBirth or 'Unknown' }}</p>
+
+  {% if character.wand %}
+    <h2>Wand</h2>
+    <p>Core: {{ character.wand.core or 'N/A' }}</p>
+    <p>Wood: {{ character.wand.wood or 'N/A' }}</p>
+    <p>Length: {{ character.wand.length or 'N/A' }}</p>
+  {% endif %}
+
+  <a href="{{ url_for('show_students') }}">Back to Students</a>
+</body>
+</html>
