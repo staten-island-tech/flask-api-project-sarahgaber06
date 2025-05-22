@@ -11,28 +11,33 @@ body {
     font-size: 1.1rem;
     /* Add light color highlight */
     color: #f7c6c5;  /* light red for Gryffindor */
+    padding: 5px;
 }
 
 .house-card.gryffindor span {
     color: #440b0a;  /* light red */
     background-color: #f8d6d6;  /* light red/pinkish */
+    padding: 5px;
 }
 
 .house-card.slytherin span {
     color: #124509;  /* light green */
     background-color: #d6f2d6;  /* light green */
+    padding: 5px;
 
 }
 
 .house-card.ravenclaw span {
     color: #124280;  /* light blue */
     background-color: #d6dff8;  /* light blue */
+    padding: 5px;
 
 }
 
 .house-card.hufflepuff span {
     color: #b49405;  /* light yellow */
     background-color: #fff7d6;  /* light yellow */
+    padding: 5px;
 
 }
 
@@ -72,7 +77,7 @@ body.view-front-page {
     background-image: url('hogwarts.webp');
     background-repeat: no-repeat;
     background-position: top center;
-    background-size: 200% auto; /* Full width, auto height */
+    background-size: cover;
     background-attachment: scroll; /* Optional: remove fixed behavior */
     background-color: #0b0b0b;
 }
@@ -187,12 +192,13 @@ h1.page-title {
 /* Only apply background image on front page */
 body.view-front-page {
     background: url('hogwarts.webp') no-repeat center center;
-    background-size: contain; /* Show full image */
+    background-size: cover; /* Show full image */
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     min-height: 100vh;
 }
+
 
 /* Hogwarts banner */
 .hogwarts-banner {
