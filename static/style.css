@@ -28,8 +28,8 @@ body {
 }
 
 .house-card.ravenclaw span {
-    color: #124280;  /* light blue */
-    background-color: #d6dff8;  /* light blue */
+    color: #2b68b8;  /* light blue */
+    background-color: #aec0f0;  /* light blue */
     padding: 5px;
 
 }
@@ -104,6 +104,7 @@ h1.page-title {
     font-size: 2rem;
     margin-bottom: 40px;
 }
+
 
 /* Grid layout for houses */
 .house-grid {
