@@ -6,26 +6,25 @@
    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 </head>
 <body class="view-front-page">
-
-
    <div class="welcome-section">
        <h1>Welcome to Hogwarts</h1>
 
-
        <div class="house-grid">
            {% for house in ['Gryffindor', 'Slytherin', 'Ravenclaw', 'Hufflepuff'] %}
-               <div class="house-card {{ house|lower }}">
-                   <img src="{{ url_for('static', filename=house|lower ~ '.png') }}" alt="{{ house }}">
-                   <span>{{ house }}</span>
-               </div>
+               <a href="{{ url_for('show_students') }}?house={{ house }}">
+                   <div class="house-card {{ house|lower }}">
+                       <img src="{{ url_for('static', filename=house|lower ~ '.png') }}" alt="{{ house }}">
+                       <span>{{ house }}</span>
+                   </div>
+               </a>
            {% endfor %}
        </div>
 
-
        <div class="view-students-link">
-           <a href="{{ url_for('show_students') }}">View Students</a>
+           <a href="{{ url_for('show_students') }}">View All Students</a>
        </div>
    </div>
 </body>
 </html>
+
 

@@ -1,63 +1,49 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 import requests
 
-
 app = Flask(__name__)
+API_URL = "https://hp-api.onrender.com/api/characters/students"
 
+def fetch_students():
+    try:
+        response = requests.get(API_URL)
+        response.raise_for_status()
+        return [s for s in response.json() if s.get("image") and s["image"].strip()]
+    except requests.RequestException:
+        return []
 
-# Function to get students with real image URLs
-def get_students_with_images():
-   response = requests.get("https://hp-api.onrender.com/api/characters/students")
-   students = response.json()
-   return [s for s in students if s.get("image") and s["image"].strip()]
+def get_students_by_house(house):
+    return [s for s in fetch_students() if s.get("house", "").lower() == house.lower()]
 
+def get_student_by_name(name):
+    for student in fetch_students():
+        if student.get("name", "").lower() == name.lower():
+            return student
+    return None
 
-# Home page
 @app.route("/")
 def index():
-   return render_template("index.html")
+    return render_template("index.html")
 
-
-# Students page
 @app.route("/students")
 def show_students():
-   students = get_students_with_images()
-   return render_template("students.html", students=students)
+    house_filter = request.args.get("house")
+    search_name = request.args.get("name")
 
+    students = fetch_students()
+    if house_filter:
+        students = [s for s in students if s.get("house", "").lower() == house_filter.lower()]
+    if search_name:
+        students = [s for s in students if search_name.lower() in s.get("name", "").lower()]
+
+    return render_template("students.html", students=students)
+
+@app.route("/student/<name>")
+def student_profile(name):
+    student = get_student_by_name(name.replace("%20", " "))
+    if student:
+        return render_template("student_detail.html", student=student)
+    return "Student not found", 404
 
 if __name__ == "__main__":
-   app.run(debug=True)
-   from flask import Flask, render_template
-
-
-app = Flask(__name__)
-
-
-@app.route('/students')
-def students():
-   # Example list of students to pass to the template
-   students_data = [
-       {
-           'name': 'Harry Potter',
-           'house': 'Gryffindor',
-           'image': 'harry.jpg',
-           'species': 'Human',
-           'gender': 'Male',
-           'dateOfBirth': '31-07-1980',
-           'yearOfBirth': 1980,
-           'ancestry': 'Half-blood',
-           'eyeColour': 'Green',
-           'hairColour': 'Black',
-           'wand': {'wood': 'Holly', 'core': 'Phoenix feather', 'length': '11'},
-           'patronus': 'Stag',
-           'hogwartsStudent': True,
-           'hogwartsStaff': False,
-           'actor': 'Daniel Radcliffe',
-           'alternate_names': [],
-           'alive': True
-       },
-       # Add more students
-   ]
-
-
-   return render_template('students.html', students=students_data)
+    app.run(debug=True)

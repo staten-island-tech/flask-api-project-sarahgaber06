@@ -5,61 +5,42 @@
    <title>Hogwarts Students</title>
    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 </head>
-   </div>
+<body class="view-students-page">
    <h1 class="page-title">Hogwarts Students</h1>
-   <body class="view-students-page">
-       <div class="students-banner">
-       </div>
-       <!-- rest of students page content -->
-   </body>
-   <div class="students-banner">
-       Hogwarts Students
-   </div>
-  
-   {% set houses = ['Gryffindor', 'Slytherin', 'Ravenclaw', 'Hufflepuff'] %}
 
-
-   {% for house in houses %}
-       <h2 class="house-title {{ house|lower }}">{{ house }}</h2>
-       <div class="grid">
-           {% for student in students %}
-               {% if student.get('house') == house %}
-                   <div class="student-card {{ house|lower }}">
-                       <img src="{{ student.get('image', '') }}" alt="{{ student.get('name', 'Unknown') }}" />
-                       <h3>{{ student.get('name', 'Unknown') }}</h3>
-                       <ul>
-                           <li><strong>Species:</strong> {{ student.get('species', 'Unknown') }}</li>
-                           <li><strong>Gender:</strong> {{ student.get('gender', 'Unknown') }}</li>
-                           <li><strong>House:</strong> {{ student.get('house', 'Unknown') }}</li>
-                           <li><strong>Date of Birth:</strong> {{ student.get('dateOfBirth', 'Unknown') }}</li>
-                           <li><strong>Year of Birth:</strong> {{ student.get('yearOfBirth', 'Unknown') }}</li>
-                           <li><strong>Ancestry:</strong> {{ student.get('ancestry', 'Unknown') }}</li>
-                           <li><strong>Eye Color:</strong> {{ student.get('eyeColour', 'Unknown') }}</li>
-                           <li><strong>Hair Color:</strong> {{ student.get('hairColour', 'Unknown') }}</li>
-                           </li>
-                           <li><strong>Patronus:</strong> {{ student.get('patronus', 'Unknown') }}</li>
-                           <li><strong>Hogwarts Student:</strong> {{ 'Yes' if student.get('hogwartsStudent') else 'No' }}</li>
-                           <li><strong>Hogwarts Staff:</strong> {{ 'Yes' if student.get('hogwartsStaff') else 'No' }}</li>
-                           <li><strong>Actor:</strong> {{ student.get('actor', 'Unknown') }}</li>
-                           <li><strong>Alternate Names:</strong>
-                               {% set alt_names = student.get('alternate_names', []) %}
-                               {% if alt_names|length > 0 %}
-                                   {{ alt_names | join(', ') }}
-                               {% else %}
-                                   None
-                               {% endif %}
-                           </li>
-                           <li><strong>Alive:</strong> {{ 'Yes' if student.get('alive') else 'No' }}</li>
-                       </ul>
-                   </div>
-               {% endif %}
+   <form method="get" action="{{ url_for('show_students') }}" class="filter-form">
+       <input type="text" name="name" placeholder="Search by name">
+       <select name="house">
+           <option value="">All Houses</option>
+           {% for house in ['Gryffindor', 'Slytherin', 'Ravenclaw', 'Hufflepuff'] %}
+               <option value="{{ house }}">{{ house }}</option>
            {% endfor %}
-       </div>
-   {% endfor %}
+       </select>
+       <button type="submit">Filter</button>
+   </form>
 
-
+   <div class="students-container">
+       {% for student in students %}
+           <div class="student-card {{ student.house|lower }}">
+               <a href="{{ url_for('student_profile', name=student.name) }}">
+                   <img src="{{ student.image }}" alt="{{ student.name }}">
+                   <h3>{{ student.name }}</h3>
+               </a>
+               <ul>
+                   <li><strong>Species:</strong> {{ student.species }}</li>
+                   <li><strong>Gender:</strong> {{ student.gender }}</li>
+                   <li><strong>House:</strong> {{ student.house }}</li>
+                   <li><strong>Date of Birth:</strong> {{ student.dateOfBirth or 'Unknown' }}</li>
+                   <li><strong>Actor:</strong> {{ student.actor }}</li>
+               </ul>
+           </div>
+       {% else %}
+           <p>No students found.</p>
+       {% endfor %}
+   </div>
 </body>
 </html>
+
 
 
 

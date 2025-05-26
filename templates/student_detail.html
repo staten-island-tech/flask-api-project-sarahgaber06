@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8" />
+   <title>{{ student.name }} - Profile</title>
+   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body class="student-profile-page">
+   <div class="profile-container">
+       <h1>{{ student.name }}</h1>
+       <img src="{{ student.image }}" alt="{{ student.name }}">
+       <ul>
+           <li><strong>Species:</strong> {{ student.species }}</li>
+           <li><strong>Gender:</strong> {{ student.gender }}</li>
+           <li><strong>House:</strong> {{ student.house }}</li>
+           <li><strong>Date of Birth:</strong> {{ student.dateOfBirth }}</li>
+           <li><strong>Year of Birth:</strong> {{ student.yearOfBirth }}</li>
+           <li><strong>Ancestry:</strong> {{ student.ancestry }}</li>
+           <li><strong>Eye Color:</strong> {{ student.eyeColour }}</li>
+           <li><strong>Hair Color:</strong> {{ student.hairColour }}</li>
+           <li><strong>Patronus:</strong> {{ student.patronus }}</li>
+           <li><strong>Actor:</strong> {{ student.actor }}</li>
+           <li><strong>Alive:</strong> {{ 'Yes' if student.alive else 'No' }}</li>
+       </ul>
+       <a href="{{ url_for('show_students') }}">← Back to Students</a>
+   </div>
+</body>
+</html>
